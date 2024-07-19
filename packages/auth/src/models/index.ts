@@ -8,5 +8,6 @@ export {
   Project,
   projectSchema,
   User,
-  userSchema,
+  userSchema
 }
+
