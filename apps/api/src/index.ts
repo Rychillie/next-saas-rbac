@@ -1,4 +1,6 @@
-import { ability } from '@nsr/auth'
+import { defineAbilityFor } from '@nsr/auth'
+
+const ability = defineAbilityFor({ role: 'MEMBER' })
 
 const userCanInviteSomeoneElse = ability.can('invite', 'User')
 const userCanDeleteOtherUsers = ability.can('delete', 'User')
