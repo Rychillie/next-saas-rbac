@@ -1,4 +1,5 @@
 import fastifyCors from '@fastify/cors'
+import fastifyJwt from '@fastify/jwt'
 import fastifySwagger from '@fastify/swagger'
 import ScalarApiReference from '@scalar/fastify-api-reference'
 import { fastify } from 'fastify'
@@ -32,8 +33,13 @@ app.register(ScalarApiReference, {
   routePrefix: '/docs',
 })
 
+app.register(fastifyJwt, {
+  secret: 'my-jwt-secret',
+})
+
 app.register(fastifyCors)
 
+app.register(auth.authenticateWithPassword)
 app.register(auth.createAccount)
 
 app.listen({ port: 3333 }).then(() => {
