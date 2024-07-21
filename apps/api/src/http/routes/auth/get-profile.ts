@@ -29,8 +29,6 @@ export async function getProfile(app: FastifyInstance) {
     async (request, reply) => {
       const { sub } = await request.jwtVerify<{ sub: string }>()
 
-      console.log(sub)
-
       const user = await prisma.user.findUnique({
         select: {
           id: true,
@@ -42,9 +40,6 @@ export async function getProfile(app: FastifyInstance) {
           id: sub,
         },
       })
-
-      console.log(user)
-
       if (!user) {
         throw new Error('User not found.')
       }
