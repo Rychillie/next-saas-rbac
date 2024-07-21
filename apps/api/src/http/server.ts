@@ -41,6 +41,7 @@ app.register(fastifyCors)
 
 app.register(auth.authenticateWithPassword)
 app.register(auth.createAccount)
+app.register(auth.getProfile)
 
 app.listen({ port: 3333 }).then(() => {
   console.log('Server is running on port 3333')
