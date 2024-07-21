@@ -29,6 +29,9 @@ importers:
       '@prisma/client':
         specifier: 5.17.0
         version: 5.17.0(prisma@5.17.0)
+      '@scalar/fastify-api-reference':
+        specifier: ^1.24.51
+        version: 1.24.51
       bcryptjs:
         specifier: ^2.4.3
         version: 2.4.3
@@ -378,6 +381,10 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
+
+  '@scalar/fastify-api-reference@1.24.51':
+    resolution: {integrity: sha512-Uub7Iw9tLeuRjAPNmgP4/JJ07kL4FFcxpUp4CzyWX5ePFn2Mv7OGTXrFgu+U5bdlSR1fupQyUXPu5MeZKSzHmg==}
+    engines: {node: '>=18'}
 
   '@types/bcryptjs@2.4.6':
     resolution: {integrity: sha512-9xlo6R2qDs5uixm0bcIqCeMCE6HiQsIyel9KQySStiyqNl2tnj2mP3DX1Nf56MD6KMenNNlBBsy3LJ7gUEQPXQ==}
@@ -2166,6 +2173,10 @@ snapshots:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
       - supports-color
+
+  '@scalar/fastify-api-reference@1.24.51':
+    dependencies:
+      fastify-plugin: 4.5.1
 
   '@types/bcryptjs@2.4.6': {}
 

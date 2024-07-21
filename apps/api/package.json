@@ -10,6 +10,7 @@
     "@fastify/swagger-ui": "^4.0.1",
     "@nsr/auth": "workspace:*",
     "@prisma/client": "5.17.0",
+    "@scalar/fastify-api-reference": "^1.24.51",
     "bcryptjs": "^2.4.3",
     "fastify": "^4.28.1",
     "fastify-type-provider-zod": "^2.0.0",
