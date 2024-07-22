@@ -43,6 +43,7 @@ app.register(fastifyJwt, {
 app.register(fastifyCors)
 
 const {
+  authenticateWithGithub,
   authenticateWithPassword,
   createAccount,
   getProfile,
@@ -50,6 +51,7 @@ const {
   resetPassword,
 } = auth
 
+app.register(authenticateWithGithub)
 app.register(authenticateWithPassword)
 app.register(createAccount)
 app.register(getProfile)
