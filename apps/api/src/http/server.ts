@@ -1,6 +1,7 @@
 import fastifyCors from '@fastify/cors'
 import fastifyJwt from '@fastify/jwt'
 import fastifySwagger from '@fastify/swagger'
+import { env } from '@nsr/env'
 import ScalarApiReference from '@scalar/fastify-api-reference'
 import { fastify } from 'fastify'
 import {
@@ -27,7 +28,15 @@ app.register(fastifySwagger, {
       description: 'Full-stack Saas app with multi-tenancy & RBAC.',
       version: '1.0.0',
     },
-    servers: [],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
   },
   transform: jsonSchemaTransform,
 })
@@ -37,7 +46,7 @@ app.register(ScalarApiReference, {
 })
 
 app.register(fastifyJwt, {
-  secret: 'my-jwt-secret',
+  secret: env.JWT_SECRET,
 })
 
 app.register(fastifyCors)
@@ -58,6 +67,6 @@ app.register(getProfile)
 app.register(requestPasswordRecover)
 app.register(resetPassword)
 
-app.listen({ port: 3333 }).then(() => {
+app.listen({ port: env.SERVER_PORT }).then(() => {
   console.log('Server is running on port 3333')
 })
