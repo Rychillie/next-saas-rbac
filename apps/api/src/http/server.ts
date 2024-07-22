@@ -42,9 +42,19 @@ app.register(fastifyJwt, {
 
 app.register(fastifyCors)
 
-app.register(auth.authenticateWithPassword)
-app.register(auth.createAccount)
-app.register(auth.getProfile)
+const {
+  authenticateWithPassword,
+  createAccount,
+  getProfile,
+  requestPasswordRecover,
+  resetPassword,
+} = auth
+
+app.register(authenticateWithPassword)
+app.register(createAccount)
+app.register(getProfile)
+app.register(requestPasswordRecover)
+app.register(resetPassword)
 
 app.listen({ port: 3333 }).then(() => {
   console.log('Server is running on port 3333')
