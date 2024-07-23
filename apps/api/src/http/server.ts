@@ -12,7 +12,7 @@ import {
 } from 'fastify-type-provider-zod'
 
 import { errorHandler } from './error-handler'
-import { auth } from './routes'
+import { auth, orgs } from './routes'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -51,21 +51,14 @@ app.register(fastifyJwt, {
 
 app.register(fastifyCors)
 
-const {
-  authenticateWithGithub,
-  authenticateWithPassword,
-  createAccount,
-  getProfile,
-  requestPasswordRecover,
-  resetPassword,
-} = auth
+app.register(auth.authenticateWithGithub)
+app.register(auth.authenticateWithPassword)
+app.register(auth.createAccount)
+app.register(auth.getProfile)
+app.register(auth.requestPasswordRecover)
+app.register(auth.resetPassword)
 
-app.register(authenticateWithGithub)
-app.register(authenticateWithPassword)
-app.register(createAccount)
-app.register(getProfile)
-app.register(requestPasswordRecover)
-app.register(resetPassword)
+app.register(orgs.createOrganizations)
 
 app.listen({ port: env.SERVER_PORT }).then(() => {
   console.log('Server is running on port 3333')
