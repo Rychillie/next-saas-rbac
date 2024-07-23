@@ -11,13 +11,14 @@ export const auth = fastifyPlugin(async (app: FastifyInstance) => {
         const { sub } = await request.jwtVerify<{ sub: string }>()
 
         return sub
-      } catch (err) {
+      } catch {
         throw new Error.UnauthorizedError('Invalid auth token')
       }
     }
 
     request.getUserMembership = async (slug: string) => {
       const userId = await request.getCurrentUserId()
+
       const member = await prisma.member.findFirst({
         where: {
           userId,
@@ -32,7 +33,7 @@ export const auth = fastifyPlugin(async (app: FastifyInstance) => {
 
       if (!member) {
         throw new Error.UnauthorizedError(
-          'You are not a member of this organization',
+          `You're not a member of this organization.`,
         )
       }
 

@@ -8,11 +8,11 @@ import { Error } from '@/http/routes'
 import { prisma } from '@/lib/prisma'
 import { getUserPermissions } from '@/utils'
 
-export async function updateOrganizations(app: FastifyInstance) {
+export async function updateOrganization(app: FastifyInstance) {
   app
     .withTypeProvider<ZodTypeProvider>()
     .register(auth)
-    .post(
+    .put(
       '/organizations/:slug',
       {
         schema: {
@@ -40,16 +40,13 @@ export async function updateOrganizations(app: FastifyInstance) {
 
         const { name, domain, shouldAttachUsersByDomain } = request.body
 
-        const { cannot } = getUserPermissions(userId, membership.role)
+        const authOrganization = organizationSchema.parse(organization)
 
-        const authOrganization = organizationSchema.parse({
-          id: organization.id,
-          ownerId: organization.ownerId,
-        })
+        const { cannot } = getUserPermissions(userId, membership.role)
 
         if (cannot('update', authOrganization)) {
           throw new Error.UnauthorizedError(
-            "You're not allowed to update this organization",
+            `You're not allowed to update this organization.`,
           )
         }
 
@@ -65,7 +62,7 @@ export async function updateOrganizations(app: FastifyInstance) {
 
           if (organizationByDomain) {
             throw new Error.BadRequestError(
-              'Another organization with same domain already exists',
+              'Another organization with same domain already exists.',
             )
           }
         }
