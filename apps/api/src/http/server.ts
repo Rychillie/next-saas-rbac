@@ -59,6 +59,7 @@ app.register(auth.requestPasswordRecover)
 app.register(auth.resetPassword)
 
 app.register(orgs.createOrganizations)
+app.register(orgs.getMembership)
 
 app.listen({ port: env.SERVER_PORT }).then(() => {
   console.log('Server is running on port 3333')
