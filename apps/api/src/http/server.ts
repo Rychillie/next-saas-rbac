@@ -12,7 +12,7 @@ import {
 } from 'fastify-type-provider-zod'
 
 import { errorHandler } from './error-handler'
-import { auth, orgs } from './routes'
+import { auth, orgs, projects } from './routes'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -65,6 +65,8 @@ app.register(orgs.getOrganizations)
 app.register(orgs.shutdownOrganization)
 app.register(orgs.transferOrganization)
 app.register(orgs.updateOrganization)
+
+app.register(projects.createProject)
 
 app.listen({ port: env.SERVER_PORT }).then(() => {
   console.log('Server is running on port 3333')
