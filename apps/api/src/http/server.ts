@@ -12,7 +12,7 @@ import {
 } from 'fastify-type-provider-zod'
 
 import { errorHandler } from './error-handler'
-import { auth, orgs, projects } from './routes'
+import { auth, members, orgs, projects } from './routes'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -43,6 +43,16 @@ app.register(fastifySwagger, {
 
 app.register(ScalarApiReference, {
   routePrefix: '/docs',
+  configuration: {
+    authentication: {
+      preferredSecurityScheme: 'bearerAuth',
+      http: {
+        bearer: {
+          token: env.DOCS_AUTHENTICATION_BEARER_TOKEN,
+        },
+      },
+    },
+  },
 })
 
 app.register(fastifyJwt, {
@@ -57,6 +67,8 @@ app.register(auth.createAccount)
 app.register(auth.getProfile)
 app.register(auth.requestPasswordRecover)
 app.register(auth.resetPassword)
+
+app.register(members.getMembers)
 
 app.register(orgs.createOrganizations)
 app.register(orgs.getMembership)

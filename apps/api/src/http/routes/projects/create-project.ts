@@ -15,7 +15,7 @@ export async function createProject(app: FastifyInstance) {
       '/organizations/:slug/projects',
       {
         schema: {
-          tags: ['projects'],
+          tags: ['Projects'],
           summary: 'Create a new project',
           security: [{ bearerAuth: [] }],
           body: z.object({

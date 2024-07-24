@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 export const organizationSchema = z.object({
   __typename: z.literal('Organization').default('Organization'),
-  id: z.string(),
+  id: z.string().uuid(),
   ownerId: z.string(),
 })
 
