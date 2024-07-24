@@ -67,6 +67,7 @@ app.register(orgs.transferOrganization)
 app.register(orgs.updateOrganization)
 
 app.register(projects.createProject)
+app.register(projects.deleteProject)
 
 app.listen({ port: env.SERVER_PORT }).then(() => {
   console.log('Server is running on port 3333')
