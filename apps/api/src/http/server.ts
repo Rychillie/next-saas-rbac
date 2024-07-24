@@ -63,6 +63,7 @@ app.register(orgs.getMembership)
 app.register(orgs.getOrganization)
 app.register(orgs.getOrganizations)
 app.register(orgs.shutdownOrganization)
+app.register(orgs.transferOrganization)
 app.register(orgs.updateOrganization)
 
 app.listen({ port: env.SERVER_PORT }).then(() => {
