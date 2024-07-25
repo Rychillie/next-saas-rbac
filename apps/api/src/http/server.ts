@@ -69,6 +69,7 @@ app.register(auth.getProfile)
 app.register(auth.requestPasswordRecover)
 app.register(auth.resetPassword)
 
+app.register(invites.acceptInvite)
 app.register(invites.createInvite)
 app.register(invites.getInvite)
 app.register(invites.getInvites)
