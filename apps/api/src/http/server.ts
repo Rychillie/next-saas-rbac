@@ -71,6 +71,7 @@ app.register(auth.resetPassword)
 
 app.register(invites.createInvite)
 app.register(invites.getInvite)
+app.register(invites.getInvites)
 
 app.register(members.getMembers)
 app.register(members.removeMember)
