@@ -1,3 +1,4 @@
 import { getMembers } from './get-members'
+import { updateMember } from './update-member'
 
-export { getMembers }
+export { getMembers, updateMember }
