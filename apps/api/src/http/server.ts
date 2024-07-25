@@ -73,6 +73,7 @@ app.register(invites.acceptInvite)
 app.register(invites.createInvite)
 app.register(invites.getInvite)
 app.register(invites.getInvites)
+app.register(invites.rejectInvite)
 
 app.register(members.getMembers)
 app.register(members.removeMember)
