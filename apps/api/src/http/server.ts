@@ -11,7 +11,7 @@ import {
   ZodTypeProvider,
 } from 'fastify-type-provider-zod'
 
-import { auth, invites, members, orgs, projects } from '@/http/routes'
+import { auth, billing, invites, members, orgs, projects } from '@/http/routes'
 
 import { errorHandler } from './error-handler'
 
@@ -68,6 +68,8 @@ app.register(auth.createAccount)
 app.register(auth.getProfile)
 app.register(auth.requestPasswordRecover)
 app.register(auth.resetPassword)
+
+app.register(billing.getOrganizationBilling)
 
 app.register(invites.acceptInvite)
 app.register(invites.createInvite)

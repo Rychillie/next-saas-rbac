@@ -3,10 +3,10 @@ import type { FastifyInstance } from 'fastify'
 import type { ZodTypeProvider } from 'fastify-type-provider-zod'
 import { z } from 'zod'
 
-import { auth } from '@/http/middlewares/auth'
+import { auth } from '@/http/middlewares'
 import { Error } from '@/http/routes'
 import { prisma } from '@/lib/prisma'
-import { getUserPermissions } from '@/utils/get-user-permissions'
+import { getUserPermissions } from '@/utils'
 
 export async function createInvite(app: FastifyInstance) {
   app

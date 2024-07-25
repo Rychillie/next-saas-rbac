@@ -2,8 +2,8 @@ import type { FastifyInstance } from 'fastify'
 import type { ZodTypeProvider } from 'fastify-type-provider-zod'
 import { z } from 'zod'
 
-import { auth } from '@/http/middlewares/auth'
-import { Error } from '@/http/routes/'
+import { auth } from '@/http/middlewares'
+import { Error } from '@/http/routes'
 import { prisma } from '@/lib/prisma'
 
 export async function acceptInvite(app: FastifyInstance) {
