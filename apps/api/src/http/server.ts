@@ -69,6 +69,7 @@ app.register(auth.requestPasswordRecover)
 app.register(auth.resetPassword)
 
 app.register(members.getMembers)
+app.register(members.removeMember)
 app.register(members.updateMember)
 
 app.register(orgs.createOrganizations)
