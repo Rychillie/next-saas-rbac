@@ -11,8 +11,9 @@ import {
   ZodTypeProvider,
 } from 'fastify-type-provider-zod'
 
+import { auth, invites, members, orgs, projects } from '@/http/routes'
+
 import { errorHandler } from './error-handler'
-import { auth, members, orgs, projects } from './routes'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -67,6 +68,8 @@ app.register(auth.createAccount)
 app.register(auth.getProfile)
 app.register(auth.requestPasswordRecover)
 app.register(auth.resetPassword)
+
+app.register(invites.createInvite)
 
 app.register(members.getMembers)
 app.register(members.removeMember)

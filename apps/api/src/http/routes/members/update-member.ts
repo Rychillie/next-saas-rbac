@@ -12,7 +12,7 @@ export async function updateMember(app: FastifyInstance) {
   app
     .withTypeProvider<ZodTypeProvider>()
     .register(auth)
-    .get(
+    .put(
       '/organizations/:slug/members/:memberId',
       {
         schema: {
