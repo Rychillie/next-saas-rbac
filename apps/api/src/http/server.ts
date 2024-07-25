@@ -74,6 +74,7 @@ app.register(invites.createInvite)
 app.register(invites.getInvite)
 app.register(invites.getInvites)
 app.register(invites.rejectInvite)
+app.register(invites.revokeInvite)
 
 app.register(members.getMembers)
 app.register(members.removeMember)
