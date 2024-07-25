@@ -1,3 +1,4 @@
 import { createInvite } from './create-invite'
+import { getInvite } from './get-invite'
 
-export { createInvite }
+export { createInvite, getInvite }
