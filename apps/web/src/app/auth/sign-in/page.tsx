@@ -7,9 +7,14 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
 
+import { signInWithEmailAndPassword } from './actions'
+
 export default function SignInPage() {
   return (
-    <form className="flex w-full max-w-sm flex-col space-y-4">
+    <form
+      action={signInWithEmailAndPassword}
+      className="flex w-full max-w-sm flex-col space-y-4"
+    >
       <div className="space-y-1">
         <Label htmlFor="email">Email</Label>
         <Input name="email" type="email" id="email" />
