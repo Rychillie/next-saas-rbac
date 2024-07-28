@@ -15,7 +15,7 @@ export default function SignUpPage() {
         <Input name="name" type="name" id="name" />
       </div>
       <div className="space-y-1">
-        <Label htmlFor="email">Email</Label>
+        <Label htmlFor="email">E-mail</Label>
         <Input name="email" type="email" id="email" />
       </div>
       <div className="space-y-1">

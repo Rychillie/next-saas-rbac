@@ -20,16 +20,14 @@ export function SignInForm() {
   )
 
   return (
-    <form
-      action={formAction}
-      className="flex w-full max-w-sm flex-col space-y-4"
-    >
+    <form action={formAction} className="space-y-4">
       <h1>{state}</h1>
 
       <div className="space-y-1">
-        <Label htmlFor="email">Email</Label>
+        <Label htmlFor="email">E-mail</Label>
         <Input name="email" type="email" id="email" />
       </div>
+
       <div className="space-y-1">
         <Label htmlFor="password">Password</Label>
         <Input name="password" type="password" id="password" />
@@ -42,7 +40,7 @@ export function SignInForm() {
         </Link>
       </div>
 
-      <Button type="submit" className="w-full" disabled={isPending}>
+      <Button className="w-full" type="submit" disabled={isPending}>
         {isPending ? (
           <Loader2 className="size-4 animate-spin" />
         ) : (
@@ -50,15 +48,15 @@ export function SignInForm() {
         )}
       </Button>
 
-      <Button variant="link" className="w-full" size="sm" asChild>
+      <Button className="w-full" variant="link" size="sm" asChild>
         <Link href="/auth/sign-up">Create new account</Link>
       </Button>
 
       <Separator />
 
-      <Button type="submit" variant="outline" className="w-full">
+      <Button type="submit" className="w-full" variant="outline">
         <Image src={githubIcon} alt="" className="mr-2 size-4 dark:invert" />
-        Sign in with Github
+        Sign in with GitHub
       </Button>
     </form>
   )

@@ -8,7 +8,7 @@ export default function ForgotPasswordPage() {
   return (
     <form className="flex w-full max-w-sm flex-col space-y-4">
       <div className="space-y-1">
-        <Label htmlFor="email">Email</Label>
+        <Label htmlFor="email">E-mail</Label>
         <Input name="email" type="email" id="email" />
       </div>
 
