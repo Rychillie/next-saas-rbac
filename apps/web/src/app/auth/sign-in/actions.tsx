@@ -12,7 +12,11 @@ const signInSchema = z.object({
   password: z.string().min(1, { message: 'Please, provide your password.' }),
 })
 
-export async function signInWithEmailAndPassword(_: unknown, data: FormData) {
+const errorSchema = z.object({
+  message: z.union([z.string(), z.null()]),
+})
+
+export async function signInWithEmailAndPassword(data: FormData) {
   const result = signInSchema.safeParse(Object.fromEntries(data))
 
   if (!result.success) {
@@ -32,7 +36,7 @@ export async function signInWithEmailAndPassword(_: unknown, data: FormData) {
     console.log(token)
   } catch (err) {
     if (err instanceof HTTPError) {
-      const { message } = await err.response.json()
+      const { message } = errorSchema.parse(await err.response.json())
 
       return { success: false, message, errors: null }
     }
